@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Try to read Cytrox domains from the assets directory
         var domainList = listOf<String>()
         try {
 
@@ -27,29 +28,36 @@ class MainActivity : AppCompatActivity() {
             resultsText.setText(e.toString())
         }
 
-        infoText.setText("Ready to check your SMS for ${domainList.size} domains")
+        infoText.setText("Έτοιμος ο έλεγχος SMS για ${domainList.size} κακόβουλες διευθύνσεις")
 
         button.setOnClickListener {
 
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_DENIED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS)
+                == PackageManager.PERMISSION_DENIED)
+            {
                 // Request the user to grant permission to read SMS messages
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_SMS), 2);
-                resultsText.setText("Permission to read SMS denied")
+                resultsText.setText("Η πρόσβαση στα SMS ήταν αδύνατη")
             }
 
-            var messageIndex = 0;
-            var numberOfHits = 0;
-            var detectedDomainsSet = setOf<String>();
+            var messageIndex = 0; //how many SMS have been read
+            var numberOfHits = 0; //how many domain detections have been recorded
+            var detectedDomainsSet = setOf<String>(); //which domains have been recorded
 
+            //open the SMS inbox for one-by-one reading
             val cursor: Cursor? =
-                contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null)
+                contentResolver.query(Uri.parse("content://sms/inbox")
+                    , null, null, null, null)
 
             if (cursor != null) {
                 if (cursor.moveToFirst()) { // must check the result to prevent exception
                     do {
+                        //get SMS body text
                         var SMStext = cursor.getString(cursor.getColumnIndexOrThrow("body"));
+                        //check if the SMS contains any of the domains
                         val matchedDomains = domainList.filter { SMStext.contains(it, ignoreCase = true) }
 
+                        //if the SMS contains any domain
                         if(matchedDomains.isNotEmpty())
                         {
                             numberOfHits += matchedDomains.size;
@@ -63,19 +71,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            var phrasing = if(numberOfHits == 1) "hit" else "hits" ;
-            var results = "Found ${numberOfHits} ${phrasing}. "
+            var phrasing = if(numberOfHits == 1) "εντοπισμός" else "εντοπισμοί" ;
+            var results = "Αποτέλεσμα: ${numberOfHits} ${phrasing}. "
+
+            //if there was any detection
             if(numberOfHits>0)
             {
                 resultsText.setTextColor(Color.RED)
-                results += "Search your SMS for the following: "
+                results += "Ψάξτε τα SMS for σας για τα ακόλουθα: "
                 for(domain in detectedDomainsSet)
                     results += domain + " "
             }
             else
             {
                 resultsText.setTextColor(Color.GREEN)
-                results += "No attack detected."
+                results += "Δεν εντοπίστηκε επίθεση με Predator."
             }
 
             resultsText.setText(results);
