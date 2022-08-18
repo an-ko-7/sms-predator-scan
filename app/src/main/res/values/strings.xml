@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">SMS Predator Scan</string>
-    <string name="action_settings">Settings</string>
-    <string name="check_sms">Check SMS</string>
+    <string name="scan_sms_btn">ΕΛΕΓΧΟΣ SMS</string>
+    <string name="faq_btn">ΑΠΟΡΙΕΣ</string>
+    <string name="explain_btn">ΕΞΗΓΗΣΗ ΑΠΟΤΕΛΕΣΜΑΤΟΣ</string>
+    <string name="faq_url">https://github.com/an-ko-7/sms-predator-scan/blob/master/README.md#%CF%83%CF%85%CF%87%CE%BD%CE%AD%CF%82-%CE%B5%CF%81%CF%89%CF%84%CE%AE%CF%83%CE%B5%CE%B9%CF%82-%CE%BA%CE%B1%CE%B9-%CE%B1%CF%80%CE%B1%CE%BD%CF%84%CE%AE%CF%83%CE%B5%CE%B9%CF%82</string>
+    <string name="safety_url">https://github.com/an-ko-7/sms-predator-scan/blob/master/README.md#%CE%BC%CF%80%CE%BF%CF%81%CE%BF%CF%8D%CE%BD-%CE%BD%CE%B1-%CE%B5%CE%BA%CF%84%CE%B5%CE%B8%CE%BF%CF%8D%CE%BD-%CF%84%CE%B1-sms-%CE%BC%CE%BF%CF%85-%CE%BA%CE%B1%CF%84%CE%AC-%CF%84%CE%BF%CE%BD-%CE%AD%CE%BB%CE%B5%CE%B3%CF%87%CE%BF-%CF%84%CE%B7%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82</string>
+    <string name="no_detection_url">https://github.com/an-ko-7/sms-predator-scan/blob/master/README.md#%CE%B7-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE-%CE%BC%CE%BF%CF%85-%CE%AD%CE%B2%CE%B3%CE%B1%CE%BB%CE%B5-%CF%80%CF%81%CE%AC%CF%83%CE%B9%CE%BD%CE%BF-%CE%B1%CF%80%CE%BF%CF%84%CE%AD%CE%BB%CE%B5%CF%83%CE%BC%CE%B1-%CE%BC%CE%B5-0-%CE%B5%CE%BD%CF%84%CE%BF%CF%80%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%CF%82-%CE%BC%CF%80%CE%BF%CF%81%CF%8E-%CE%BD%CE%B1-%CE%B5%CE%AF%CE%BC%CE%B1%CE%B9-%CF%83%CE%AF%CE%B3%CE%BF%CF%85%CF%81%CE%BF%CF%82-%CF%8C%CF%84%CE%B9-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CF%81%CE%B1%CE%BA%CE%BF%CE%BB%CE%BF%CF%85%CE%B8%CE%BF%CF%8D%CE%BC%CE%B1%CE%B9</string>
+    <string name="detection_url">https://github.com/an-ko-7/sms-predator-scan/blob/master/README.md#%CE%B7-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE-%CE%BC%CE%BF%CF%85-%CE%AD%CE%B2%CE%B3%CE%B1%CE%BB%CE%B5-%CE%BA%CF%8C%CE%BA%CE%BA%CE%B9%CE%BD%CE%BF-%CE%B1%CF%80%CE%BF%CF%84%CE%AD%CE%BB%CE%B5%CF%83%CE%BC%CE%B1-%CE%BC%CE%B5-%CE%B5%CE%BD%CF%84%CE%BF%CF%80%CE%B9%CF%83%CE%BC%CF%8C-%CE%B5%CF%80%CE%AF%CE%B8%CE%B5%CF%83%CE%B7%CF%82-%CF%84%CE%B9-%CE%BD%CE%B1-%CE%BA%CE%AC%CE%BD%CF%89</string>
+    <string name="permission_rejection_notification">Η εφαρμογή SMS Predator Scan δεν μπορεί να λειτουργήσει χωρίς πρόσβαση στα SMS σας. Μπορείτε να παραχωρίσετε χειροκίνητα πρόσβαση, ανατρέχοντας στις ρυθμίσεις εφαρμογών και έπειτα στις άδειές τους.</string>
+    <string name="permission_explanation">Θα σας ζητηθεί πρόσβαση στα SMS σας. Η διαδικασία λαμβάνει χώρα μόνο τοπικά, και η εφαρμογή δε συλλέγει δεδομένα κανενός τύπου.</string>
 </resources>

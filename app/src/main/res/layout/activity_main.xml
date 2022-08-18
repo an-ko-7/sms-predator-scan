@@ -7,34 +7,69 @@
     android:layout_height="match_parent"
     tools:context="com.example.smspredatorscan.MainActivity">
 
+    <Button
+        android:id="@+id/scanBtn"
+        android:layout_width="167dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="480dp"
+        android:text="@string/scan_sms_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/faqBtn"
+        android:layout_width="167dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="592dp"
+        android:text="@string/faq_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/explainBtn"
+        android:layout_width="211dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="364dp"
+        android:visibility="gone"
+        android:text="@string/explain_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="183dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="124dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
+
     <TextView
         android:id="@+id/infoText"
         android:layout_width="277dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="504dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="592dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/resultsText"
-        android:layout_width="277dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="408dp"
+        android:layout_width="280dp"
+        android:layout_height="163dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="412dp"
+        android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="167dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="436dp"
-        android:text="@string/check_sms"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
