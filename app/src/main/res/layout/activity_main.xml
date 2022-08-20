@@ -40,6 +40,7 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
+        android:layout_above="@+id/infoText"
         android:layout_width="183dp"
         android:layout_height="173dp"
         android:layout_marginStart="120dp"
@@ -47,8 +48,7 @@
         android:indeterminate="true"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/infoText"
@@ -62,6 +62,7 @@
 
     <TextView
         android:id="@+id/resultsText"
+        android:layout_below="@+id/infoText"
         android:layout_width="280dp"
         android:layout_height="163dp"
         android:layout_marginEnd="52dp"

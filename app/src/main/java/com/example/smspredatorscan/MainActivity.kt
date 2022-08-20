@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     var domainList = listOf<String>()
 
-    //Wait for permission dialog result
+    //Waiting for the permission dialog result, called below
     val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -35,12 +35,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    //Main function
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Read Cytrox domains from the assets directory
-
         try {
 
             val domains = assets.open("domains.txt")
@@ -53,11 +53,9 @@ class MainActivity : AppCompatActivity() {
 
         infoText.setText("Ο έλεγχος SMS για ${domainList.size} κακόβουλες διευθύνσεις μπορεί να ξεκινήσει")
 
-        Log.d("PermissionAsk","0")
-
         scanBtn.setOnClickListener {
 
-            //Check and ask for permission
+            //Check, explain and ask for SMS permission
             when {
                 ContextCompat.checkSelfPermission(
                     this,
@@ -69,8 +67,7 @@ class MainActivity : AppCompatActivity() {
                     explainPermissionRequest()
             }
                 else -> {
-                    // You can directly ask for the permission.
-                    // The registered ActivityResultCallback gets the result of this request.
+                    // Directly ask for permission
                     requestPermissionLauncher.launch(
                         Manifest.permission.READ_SMS)
                 }
@@ -78,6 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        //Load FAQ button with URL
         faqBtn.setOnClickListener {
             val url = getString(R.string.faq_url)
             val intent = Intent(Intent.ACTION_VIEW)
@@ -89,10 +87,12 @@ class MainActivity : AppCompatActivity() {
 
     fun scanSMS()
     {
-        //Note: progress bar doesn't show up yet due to some bug
-        progressBar.setVisibility(View.VISIBLE); //Show progress bar
-
         val SMS_Scan_Thread = Thread { //run the scan on a separate thread
+
+            //Show the progress bar
+            this@MainActivity.runOnUiThread(java.lang.Runnable {
+                progressBar.visibility = View.VISIBLE
+            })
 
             var messageIndex = 0; //how many SMS have been read
             var numberOfHits = 0; //how many domain detections have been recorded
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
                         messageIndex++;
                     } while (cursor.moveToNext())
                 } else {
-                    //resultsText.setText("Το SMS ${messageIndex} δεν μπόρεσε να διαβαστεί")
+                    resultsText.setText("Το SMS ${messageIndex} δεν μπόρεσε να διαβαστεί")
                 }
             }
 
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
             var phrasing = if(numberOfHits == 1) "εντοπισμός" else "εντοπισμοί" ;
             var results = "Αποτέλεσμα: ${numberOfHits} ${phrasing}. "
 
-            //if there was any detection
+            //If there was any detection
             if(numberOfHits>0)
             {
                 resultsText.setTextColor(Color.RED)
@@ -144,15 +144,18 @@ class MainActivity : AppCompatActivity() {
                 results += "Δεν εντοπίστηκε SMS επίθεσης, αλλά δεν μπορεί να εξασφαλιστεί ότι δεν υπήρξε."
             }
 
+            //Show results
             resultsText.setText(results);
+
+            //Hide the progress bar
+            this@MainActivity.runOnUiThread(java.lang.Runnable {
+                progressBar.visibility = View.GONE
+            })
 
         }
         SMS_Scan_Thread.start()
 
-        SMS_Scan_Thread.join()
-        progressBar.setVisibility(View.GONE); //Hide progress bar
-
-        //Show the explanation button and load it with corresponding URL
+        //Show the explanation button and load it with the corresponding URL
         explainBtn.setVisibility(View.VISIBLE)
         explainBtn.setOnClickListener {
             val url =
@@ -166,6 +169,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Pop-up in case the user rejected SMS permission request
     fun notifyPermissionRejection()
     {
         val alertDialog: AlertDialog? = this?.let {
@@ -201,6 +205,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //Pop-up to explain SMS permission request
     fun explainPermissionRequest()
     {
         val alertDialog: AlertDialog? = this?.let {
