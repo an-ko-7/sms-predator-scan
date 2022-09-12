@@ -59,7 +59,7 @@
 
 ## Μπορώ να δω τον κώδικα της εφαρμογής; Επιτρέπεται η επαναχρησιμοποίησή του;
 
-Ναι. Ο κώδικας είναι διαθέσιμος στο [παρόν αποθετήριο GitHub](https://github.com/an-ko-7/sms-predator-scan), υπό την άδεια ανοικτού κώδικα MIT.
+Ναι. Ο κώδικας είναι διαθέσιμος στο [παρόν αποθετήριο GitHub](https://github.com/an-ko-7/sms-predator-scan), υπό την άδεια ανοικτού κώδικα MIT. Όλη η ουσιαστική λειτουργικότητα περιλαμβάνεται στο αρχείο [`MainActivity.kt`](https://github.com/an-ko-7/sms-predator-scan/blob/master/app/src/main/java/com/smspredatorscan/app/MainActivity.kt).
 
 ## Ποιος ανέπτυξε την εφαρμογή;
 
